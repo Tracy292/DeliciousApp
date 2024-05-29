@@ -11,9 +11,9 @@ public class Size {
         }
 
 
-        public static final Size INCH_4 = new Size("4 inches", 4.99);
-        public static final Size INCH_8 = new Size("8 inches", 6.99);
-        public static final Size INCH_12 = new Size("12 inches", 8.99);
+        public static final Size Inch4 = new Size("4 inches", 4.99);
+        public static final Size Inch8 = new Size("8 inches", 6.99);
+        public static final Size Inch12 = new Size("12 inches", 8.99);
 
 
         public String getName() {
