@@ -11,33 +11,42 @@ import java.util.List;
 public class Receipt {
 
     public static void generateReceipt(OrderItem orderItem) {
-        createReceiptsFolder(); // Make sure the receipts folder exists
+        createReceiptsFolder();
 
         String filename = generateFilename();
+
+        System.out.println("Order Details:");
+        System.out.println("Item Name: " + orderItem.getItemName());
+        System.out.println("Price: $" + orderItem.getPrice());
+
+        // Check if the item has toppings
+        if (!orderItem.getItemsToppings().isEmpty()) {
+            System.out.println("Toppings:");
+            List<Topping> toppings = orderItem.getItemsToppings();
+            for (Topping topping : toppings) {
+                System.out.println("- " + topping.getName());
+            }
+        }
 
         try {
             FileWriter writer = new FileWriter("receipts/" + filename);
             writer.write("Order Details:\n");
             writer.write("Item Name: " + orderItem.getItemName() + "\n");
-            writer.write("Size: " + orderItem.getItemSize().getName() + "\n");
+            writer.write("Price: $" + orderItem.getPrice() + "\n");
 
-            // Write toppings
-            writer.write("Toppings:\n");
-            List<Topping> toppings = orderItem.getItemsToppings();
-            if (!toppings.isEmpty()) {
+            if (!orderItem.getItemsToppings().isEmpty()) {
+                writer.write("Toppings:\n");
+                List<Topping> toppings = orderItem.getItemsToppings();
                 for (Topping topping : toppings) {
                     writer.write("- " + topping.getName() + "\n");
                 }
-            } else {
-                writer.write("No toppings added.\n");
             }
 
-            writer.write("Price: $" + orderItem.getPrice() + "\n");
             writer.close();
             System.out.println("Receipt generated: " + filename);
         } catch (IOException e) {
             System.out.println("Failed to generate receipt: " + e.getMessage());
-            e.printStackTrace(); // Print the stack trace for debugging
+            e.printStackTrace();
         }
     }
 
@@ -58,4 +67,3 @@ public class Receipt {
         }
     }
 }
-

@@ -1,0 +1,11 @@
+Order Details:
+Item Name: Sandwich
+Size: 4 inches
+Toppings:
+- ham
+- steak
+- pepper jack
+- onions
+- lettuce
+- mayo
+Price: $8.25

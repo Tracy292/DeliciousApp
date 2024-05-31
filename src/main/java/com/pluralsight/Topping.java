@@ -1,8 +1,8 @@
 package com.pluralsight;
 
 public class Topping {
-        private String name;
-        private boolean isPremium;
+        protected String name;
+        protected boolean isPremium;
 
         public Topping(String name, boolean isPremium) {
             this.name = name;

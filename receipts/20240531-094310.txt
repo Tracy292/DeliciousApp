@@ -1,0 +1,10 @@
+Order Details:
+Item Name: Sandwich
+Price: $8.25
+Toppings:
+- White
+- ham
+- bacon
+- swiss
+- tomatoes
+- onions

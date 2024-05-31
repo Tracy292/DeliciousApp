@@ -1,0 +1,3 @@
+Order Details:
+Item Name: Pepsi
+Price: $2.0

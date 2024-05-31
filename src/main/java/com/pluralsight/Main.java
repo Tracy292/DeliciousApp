@@ -3,13 +3,12 @@ package com.pluralsight;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import static com.pluralsight.Size.parseSize;
-
+import java.util.*;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     static List<OrderItem> orderItems = new ArrayList<>();
+
     public static void main(String[] args) {
         System.out.println("........Welcome to our DELIcious app!!:)........ ");
         boolean continueOrdering = true;
@@ -34,6 +33,7 @@ public class Main {
                     break;
                 case 2:
                     checkout();
+                    break;
                 default:
                     System.out.println("Invalid option! Please try again.");
             }
@@ -63,7 +63,6 @@ public class Main {
                 case 3:
                     addChips();
                     break;
-
                 case 0:
                     System.out.println("Order canceled.");
                     return;
@@ -76,7 +75,9 @@ public class Main {
             continueOrdering = continueOption.equalsIgnoreCase("Y");
         } while (continueOrdering);
     }
+
     static Size sandwichSize;
+
     private static void addSandwich() {
         double totalPrice = 0.0;
         List<Topping> toppingsList = new ArrayList<>();
@@ -91,6 +92,11 @@ public class Main {
             String sandwichSizeInput = scanner.nextLine();
             sandwichSize = Size.parseSize(sandwichSizeInput);
 
+            System.out.println("Here are our bread options:");
+            System.out.println(Bread.getBreadTypes());
+            System.out.print("Which bread would you like? ");
+            String breadChoice = scanner.nextLine();
+            toppingsList.add(new Bread(breadChoice));
 
             System.out.print("Would you like to add a protein? (Y/N): ");
             if (scanner.nextLine().equalsIgnoreCase("Y")) {
@@ -116,7 +122,6 @@ public class Main {
                 } while (scanner.nextLine().equalsIgnoreCase("Y"));
             }
 
-
             System.out.print("Would you like to add toppings? (Y/N): ");
             if (scanner.nextLine().equalsIgnoreCase("Y")) {
                 do {
@@ -129,7 +134,6 @@ public class Main {
                 } while (scanner.nextLine().equalsIgnoreCase("Y"));
             }
 
-            // Add sauces
             System.out.print("Would you like to add sauces? (Y/N): ");
             if (scanner.nextLine().equalsIgnoreCase("Y")) {
                 do {
@@ -180,10 +184,6 @@ public class Main {
 
         return totalPrice;
     }
-
-
-
-
 
     private static void addChips() {
         System.out.println("Here is our Variety of Chips:");
@@ -288,7 +288,6 @@ public class Main {
         }
     }
 
-
     private static double calculateTotalPrice() {
         double total = 0.0;
         for (OrderItem orderItem : orderItems) {
@@ -297,4 +296,6 @@ public class Main {
         return total;
     }
 }
+
+
 

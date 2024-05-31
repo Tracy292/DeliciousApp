@@ -3,11 +3,14 @@ package com.pluralsight;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bread {
+public class Bread extends Topping {
         private String type;
-        private Bread(String type) {
+
+        public Bread(String type) {
+                super(type, false);
                 this.type = type;
         }
+
         private static final List<Bread> breadTypes = new ArrayList<>();
 
         public static final Bread WHITE = new Bread("White");
@@ -35,3 +38,4 @@ public class Bread {
                 return getType();
         }
 }
+
