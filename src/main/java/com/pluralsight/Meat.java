@@ -2,6 +2,9 @@ package com.pluralsight;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.pluralsight.Size;
+
+import static com.pluralsight.Size.*;
 
 public class Meat extends Topping {
     public Meat(String name) {
@@ -21,6 +24,23 @@ public class Meat extends Topping {
         meatOptions.add(new Meat("Plant based Ham"));
     }
 
+        public double calculatePrice(Size size, boolean extra) {
+            double basePrice = 0.0;
+            if (size.equals(Inch4)) {
+                basePrice = 1.0;
+            } else if (size.equals(Inch8)) {
+                basePrice = 2.0;
+            } else if (size.equals(Inch12)) {
+                basePrice = 3.0;
+            }
+
+
+            if (extra) {
+                basePrice += 0.50;
+            }
+
+            return basePrice;
+        }
 
     public static List<Meat> getMeatOptions() {
         return meatOptions;

@@ -3,7 +3,12 @@ package com.pluralsight;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Chips {
+public class Chips extends OrderItem {
+
+    public Chips(String itemName, double price) {
+        super(itemName, price);
+    }
+
     public static class Chip {
         private String name;
         private double price;
@@ -36,5 +41,10 @@ public class Chips {
 
     public static List<Chip> getChipOptions() {
         return chipOptions;
+    }
+
+    @Override
+    public String toString() {
+        return getItemName();
     }
 }

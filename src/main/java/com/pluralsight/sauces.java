@@ -22,4 +22,9 @@ public class sauces extends Topping {
     public static List<sauces> getSauceOptions() {
         return sauceOptions;
     }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }
